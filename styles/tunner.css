@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap');
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background-color: #F3F3F3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tunner-container {
+    width: 80%;
+    height: 1000px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background: radial-gradient(116.99% 103.56% at 50% 100%, rgba(33, 37, 41, 0) 0%, rgba(109, 165, 37, 0.21) 87.75%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    border-radius: 42px;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.header {
+    margin-top: 40px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+
+/* Dropdown Menu */
+
+.dropbtn {
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #04AA6D;
+    background-color: transparent;
+    border: 2px solid #04AA6D;
+    cursor: pointer;
+    border-radius: 16px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #04AA6D;
+    color: #FFFFFF;
+}
+
+.show {
+    display: block;
+}
+
+
+/* Page Title */
+
+#page-title {
+    font-size: 31px;
+    margin: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+
+/* Tunner Section */
+
+.tunner-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
+.tunner-bar {
+    width: 80%;
+    height: 175px;
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid #04AA6D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tunner-bars-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.tunner-slider {
+    position: absolute;
+    left: 65%
+}
+
+#tunner-slider-tip {
+    position: absolute;
+    top: -50px;
+    left: 7px;
+}
+
+.tunner-slider-line {
+    width: 3px;
+    height: 200px;
+    margin-top: -25px;
+    margin-left: 26px;
+    background: #2D7B56;
+    border-radius: 4px;
+}
+
+
+/* Guitar Section */
+
+.guitar {
+    margin: 85px;
+    display: flex;
+    justify-content: center
+}
+
+.guitar-strings {
+    position: absolute;
+}
+
+.guitar-strings-mobile {
+    width: 80%;
+    position: absolute;
+    display: none;
+}
+
+.strings {
+    width: 50%;
+    height: 245px;
+    padding: 35px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-side {
+    align-items: flex-end;
+}
+
+.strings-control {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #fff;
+    color: #25A56A;
+    font-size: 25px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#tunner-slider-tooltip {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 4px 15px;
+    position: absolute;
+    top: -50px;
+    left: 60px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #33B478 0%, #222222 100%);
+}
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 425px) {
+    .tunner-container {
+        width: 90%;
+    }
+    .header {
+        flex-direction: column;
+    }
+    .volume {
+        width: 100%;
+    }
+    #volume-icon {
+        width: 32px;
+    }
+    .brand-logo img {
+        width: 185px;
+    }
+    .dropdown {
+        display: none;
+    }
+    .volume-section {
+        padding: 0 20px;
+    }
+    .volume-bar {
+        width: 100%;
+    }
+    #page-title {
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .guitar img {
+        width: 270px;
+    }
+    .guitar-strings-mobile {
+        display: flex;
+        justify-content: space-between;
+    }
+    .guitar-strings {
+        display: none;
+    }
+}

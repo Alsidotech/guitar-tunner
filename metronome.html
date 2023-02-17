@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metronome</title>
+    <link rel="stylesheet" href="./styles/metronome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <div class="metronome-container">
+        <!-- Brand Logo Section -->
+        <div id="brand-logo">
+            <img src="./assets/logo.svg" alt="logo">
+        </div>
+
+        <!-- Tunner Heading -->
+        <h2 id="page-title">Metronome</h2>
+
+        <!-- Metronome Section -->
+        <div class="metronome">
+            <input type="range" class="slider" value="120" min="40" max="220" />
+            <h2 id="bpm-display" class="show">
+                <span class="tempo">120</span>
+                <span class="bpm">BPM</span>
+            </h2>
+            <div id="mobile-range">
+                <span id="bmp">BPM</span>
+                <div class="beats-value">
+                    <span id="beats-value-up">121</span>
+                    <span id="beats-value">120</span>
+                    <span id="beats-value-down">119</span>
+                </div>
+                <div id="beats">
+                    <span id="add-beats" class="btn">+</span>
+                    <span id="subtract-beats" class="btn">-</span>
+                </div>
+            </div>
+            <div id="led-indicator">
+                <div class="led-indicator">
+                    <div class="led led-color"></div>
+                </div>
+                <div class="led-indicator">
+                    <div class="led"></div>
+                </div>
+                <div class="led-indicator">
+                    <div class="led"></div>
+                </div>
+                <div class="led-indicator">
+                    <div class="led"></div>
+                </div>
+            </div>
+            <div id="play-pause">Play</div>
+        </div>
+    </div>
+
+    <script src="./scripts/metronome.js" type="module"></script>
+</body>
+
+</html>
