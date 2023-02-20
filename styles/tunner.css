@@ -145,17 +145,18 @@ body {
 }
 
 .tunner-range-slider {
-    width: 100%;
-    margin-top: 80px;
+    width: 94%;
+    margin-top: 0px;
+    margin-left: 19px;
     z-index: 1000;
 }
 
 .slider {
+    height: 175px;
     appearance: none;
-    border-radius: 30px;
     outline: none;
     overflow: hidden;
-    background: #222222;
+    background: transparent;
     -webkit-transition: .2s;
     transition: opacity .2s;
     -webkit-appearance: none;
@@ -168,10 +169,9 @@ body {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #04AA6D;
+    width: 3px;
+    height: 175px;
+    background: #43695b;
     cursor: pointer;
 }
 
