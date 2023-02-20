@@ -1,3 +1,5 @@
+let soundIndication;
+
 //Call initialize() when page is loaded
 window.addEventListener("load", initialize);
 
@@ -16,9 +18,15 @@ function initialize() {
     navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
             console.log("Connected live audio input :)"); //Yeah, we're happy
+            soundIndication = document.querySelector("#volume-icon");
+            soundIndication.src = "./assets/mic-on.svg";
             use_stream(stream);
         })
-        .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
+        .catch(function(err) {
+            console.log(err.name + ": " + err.message);
+            soundIndication = document.querySelector("#volume-icon");
+            soundIndication.src = "./assets/mic-off.svg";
+        }); // always check for errors at the end.
 }
 
 //This function take audio stream as input and processes it to recognise guitar string being played and frequency of input audio
@@ -105,9 +113,9 @@ function use_stream(stream) {
             if (offset > 120 && offset < 630) {
                 // console.log("string = "+string+"  f = "+frequency+"  offset = "+offset+"\n");
                 // console.log("upper_limit = "+upper_limit+"  lower_limit = "+lower_limit+"\n");
-                abc(frequency);
+                //draw(frequency);
+                abc(frequency)
             }
-            console.log('aba')
         }
         //Recursion: Call itself after every 250ms to be ever-ready to take input and process it
         setTimeout(auto_correlation, 250);
@@ -117,17 +125,26 @@ function use_stream(stream) {
 }
 
 function abc(frequency) {
-    // const tunnerSlider = document.querySelector(".tunner-slider");
-    const slider = document.querySelector("#slider");
-    // tunnerSlider.value = slider.value
-    // const sliderValue = parseInt(slider.value) + 16;
-    // tunnerSlider.style.left = sliderValue + 'px';
-    console.log('Frequency: ', frequency)
+    let sliderLabel = document.querySelector("#slider-label");
+    let slider = document.querySelector("#slider");
+
     if (frequency) {
-        slider.value = frequency
+        slider.max = (standard_frequency[string] * 2).toFixed(1)
+        slider.value = (frequency).toFixed(1)
+        sliderLabel.style.left = parseInt(slider.value) / (parseInt(slider.max) / 100) + 1 + "%";
+
+        if (frequency < standard_frequency[string]) {
+            sliderLabel.innerText = "Low"
+        } else {
+            sliderLabel.innerText = "High"
+        }
+
         return;
     }
-    slider.value = "150"
+    slider.max = "100"
+    slider.value = "50.0"
+    sliderLabel.style.left = "51%";
+
 }
 
 //This function draws that nice animation type doughnut chart on screen
@@ -156,6 +173,7 @@ function draw(frequency) {
         centreY = dimension * 0.5,
         radius = dimension * 0.5;
     var angle = (2 * Math.PI * percent) / 100.0 - Math.PI / 2.0;
+    console.log('Angle: ', angle)
     dough_ctx.fillStyle = '#ff9900';
     dough_ctx.beginPath();
     dough_ctx.moveTo(centreX, centreY); //centre
@@ -191,4 +209,5 @@ function draw(frequency) {
     dough_ctx.font = (radius * 0.15 | 0) + 'px sans-serif';
     if (string != undefined)
         dough_ctx.fillText("of " + (standard_frequency[string]).toFixed(1) + " Hz", centreX + radius * 0.05, centreY + radius * 0.40);
+    console.log(frequency);
 }

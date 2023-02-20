@@ -33,6 +33,10 @@ body {
     align-items: center
 }
 
+#volume-icon {
+    width: 54px;
+}
+
 
 /* Dropdown Menu */
 
@@ -142,12 +146,12 @@ body {
 .tunner-slider-container {
     width: 65%;
     position: absolute;
+    padding: 0 20px;
 }
 
 .tunner-range-slider {
-    width: 94%;
+    width: 100%;
     margin-top: 0px;
-    margin-left: 19px;
     z-index: 1000;
 }
 
@@ -160,6 +164,7 @@ body {
     -webkit-transition: .2s;
     transition: opacity .2s;
     -webkit-appearance: none;
+    position: relative;
 }
 
 .slider:hover {
@@ -181,6 +186,30 @@ body {
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
+}
+
+#tunner-slider-tooltip {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 4px 15px;
+    position: absolute;
+    top: -50px;
+    left: 30px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #33B478 0%, #222222 100%);
+}
+
+#slider-label {
+    font-size: 18px;
+    font-weight: 400;
+    position: absolute;
+    top: -50px;
+    left: 2%;
+    padding: 5px 15px;
+    color: #fff;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #33B478 0%, #222222 100%);
 }
 
 
@@ -291,18 +320,6 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-
-#tunner-slider-tooltip {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 400;
-    padding: 4px 15px;
-    position: absolute;
-    top: -50px;
-    left: 30px;
-    border-radius: 6px;
-    background: linear-gradient(180deg, #33B478 0%, #222222 100%);
 }
 
 
