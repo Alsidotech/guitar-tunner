@@ -9,7 +9,7 @@ var string; //this variable holds name of string being tuned
 //As the name suggests, this function is called when page is loaded
 function initialize() {
     abc();
-    draw(); //draw the circles once and just display "Rhythm" as we don't have any data yet
+    //draw(); //draw the circles once and just display "Rhythm" as we don't have any data yet
     var constraints = { audio: true }; //only request audio from microphones, video not required
     //Request permission to record audio. If allowed, call use_stream function, which will process "audio stream".
     //Show error in console if permission is not granted
@@ -105,8 +105,9 @@ function use_stream(stream) {
             if (offset > 120 && offset < 630) {
                 // console.log("string = "+string+"  f = "+frequency+"  offset = "+offset+"\n");
                 // console.log("upper_limit = "+upper_limit+"  lower_limit = "+lower_limit+"\n");
-                draw(frequency);
+                abc(frequency);
             }
+            console.log('aba')
         }
         //Recursion: Call itself after every 250ms to be ever-ready to take input and process it
         setTimeout(auto_correlation, 250);
@@ -116,12 +117,13 @@ function use_stream(stream) {
 }
 
 function abc(frequency) {
-    const tunnerSlider = document.querySelector(".tunner-slider");
+    // const tunnerSlider = document.querySelector(".tunner-slider");
     const slider = document.querySelector("#slider");
-
-    tunnerSlider.value = slider.value
-    const sliderValue = parseInt(slider.value) + 16;
-    tunnerSlider.style.left = sliderValue + 'px';
+    // tunnerSlider.value = slider.value
+    // const sliderValue = parseInt(slider.value) + 16;
+    // tunnerSlider.style.left = sliderValue + 'px';
+    console.log('Frequency: ', frequency)
+    slider.value = frequency
 }
 
 //This function draws that nice animation type doughnut chart on screen
@@ -140,11 +142,12 @@ function draw(frequency) {
     // percent tells how close the input signal is from being in tune
     // percent = 100 - error% in input
     var percent;
+    console.log(string)
     if (string == undefined)
         percent = 100;
     else percent = 100 - (Math.abs(frequency.toFixed(1) - standard_frequency[string].toFixed(1)) * 100) / standard_frequency[string].toFixed(1);
-
-    //Drawing arcs and filling nice colors
+    console.log('Percent: ', percent)
+        //Drawing arcs and filling nice colors
     var centreX = dimension * 0.5,
         centreY = dimension * 0.5,
         radius = dimension * 0.5;
