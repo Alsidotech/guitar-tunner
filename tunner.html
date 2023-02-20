@@ -7,144 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tunner</title>
     <link rel="stylesheet" href="./styles/tunner.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./scripts/tunner.js"></script>
 </head>
 
 <body>
 
-    <div class="tunner-container">
-        <!-- Header Section -->
-        <div class="header">
-            <div class="volume">
-                <img src="./assets/volume-up.svg" alt="volume" id="volume-icon">
-            </div>
-            <div class="brand-logo">
-                <img src="./assets/logo.svg" alt="logo">
-            </div>
-            <div class="dropdown">
-                <button onclick="dropdown()" class="dropbtn">
-                    <span>Guitar</span>
-                    <i class="fa fa-chevron-down"></i>
-                </button>
-                <div id="myDropdown" class="dropdown-content">
-                    <a href="#tunner">Tunner</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tunner Heading -->
-        <h2 id="page-title">Tunner</h2>
-
-        <!-- Volume Bar Section -->
-        <div class="tunner-section">
-            <div class="tunner-bar">
-                <div class="tunner-bars-container">
-                    <div class="tunner-lines" style="width: 2px;height:125px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:125px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:100px;background:#00000080;"></div>
-                    <div class="tunner-lines" style="width: 2px;height:125px;background:#00000080;"></div>
-                </div>
-            </div>
-            <div class="tunner-slider">
-                <div>
-                    <div id="tunner-slider-tooltip">Low</div>
-                    <img src="./assets/slider-top.svg" id="tunner-slider-tip" alt="slider top" width="40px">
-                </div>
-                <div class="tunner-slider-line"></div>
-            </div>
-        </div>
-
-        <!-- Guitar Section -->
-        <div class="guitar">
-            <img src="./assets/guitar.svg" alt="guitar">
-            <div class="guitar-strings">
-                <img src="./assets/guitar-points.svg" alt="guitar tunning points" usemap="#guitar-points">
-
-                <map name="guitar-points">
-                    <area shape="circle" coords="32, 241, 31" href="#" alt="E">
-                    <area shape="circle" coords="161, 169, 31" href="#" alt="A">
-                    <area shape="circle" coords="289, 96, 32" href="#" alt="D">
-                    <area shape="circle" coords="689, 95, 31" href="#" alt="G">
-                    <area shape="circle" coords="825, 169, 32" href="#" alt="H">
-                    <area shape="circle" coords="954, 241, 32" href="#" alt="E">
-                </map>
-            </div>
-
-
-            <div class="guitar-strings-mobile">
-                <div class="strings left-side">
-                    <div class="strings-control string-D4">D</div>
-                    <div class="strings-control string-A5">A</div>
-                    <div class="strings-control string-E6">E</div>
-                </div>
-                <div class="strings right-side">
-                    <div class="strings-control string-G3">G</div>
-                    <div class="strings-control string-B2">B</div>
-                    <div class="strings-control string-E1">E</div>
-                </div>
-            </div>
-
-            <audio id="E1" preload="auto">
-                <source src="https://www.electricherald.com/tuner/1-E.mp3"></source>
-                </audio>
-            <audio id="B2" preload="auto">
-                <source src="https://www.electricherald.com/tuner/2-B.mp3"></source>
-                </audio>
-            <audio id="G3" preload="auto">
-                <source src="https://www.electricherald.com/tuner/3-G.mp3"></source>
-                </audio>
-            <audio id="D4" preload="auto">
-                <source src="https://www.electricherald.com/tuner/4-D.mp3"></source>
-                </audio>
-            <audio id="A5" preload="auto">
-                <source src="https://www.electricherald.com/tuner/5-A.mp3"></source>
-                </audio>
-            <audio id="E6" preload="auto">
-                <source src="https://www.electricherald.com/tuner/6-E.mp3"></source>
-            </audio>
-        </div>
-    </div>
-
-    <script>
-        /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
-        function dropdown() {
-
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
-
-    <script src="./scripts/playNodes.js" type="module"></script>
+    <h1>Rhythm</h1>
+    <!-- Doughnut chart showing tuning information -->
+    <canvas id="doughnut"></canvas>
 
 </body>
 

@@ -120,22 +120,67 @@ body {
 
 .tunner-slider {
     position: absolute;
-    left: 65%
+    top: 0;
+    left: 16px;
+    user-select: none;
 }
 
 #tunner-slider-tip {
     position: absolute;
     top: -50px;
-    left: 7px;
+    left: -19px;
 }
 
 .tunner-slider-line {
     width: 3px;
     height: 200px;
     margin-top: -25px;
-    margin-left: 26px;
     background: #2D7B56;
     border-radius: 4px;
+}
+
+.tunner-slider-container {
+    width: 65%;
+    position: absolute;
+}
+
+.tunner-range-slider {
+    width: 100%;
+    margin-top: 80px;
+    z-index: 1000;
+}
+
+.slider {
+    appearance: none;
+    border-radius: 30px;
+    outline: none;
+    overflow: hidden;
+    background: #222222;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    -webkit-appearance: none;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
 }
 
 
@@ -148,6 +193,8 @@ body {
 }
 
 .guitar-strings {
+    width: 70%;
+    display: flex;
     position: absolute;
 }
 
@@ -166,13 +213,75 @@ body {
     justify-content: space-between;
 }
 
+.strings-web {
+    height: 290px;
+    padding-top: 40px;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 120px;
+}
+
 .right-side {
     align-items: flex-end;
 }
 
+.right-side-web {
+    padding-left: 120px;
+    padding-right: 10px;
+}
+
+.string {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    flex-direction: row-reverse;
+}
+
+.string-right {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.strings-line {
+    height: 2px;
+    background: rgb(177, 176, 176);
+    margin-left: 10px;
+}
+
+.line-D4 {
+    width: 1.6em;
+    margin-right: 25px;
+}
+
+.line-A5 {
+    width: 9.6em;
+    margin-right: 25px;
+}
+
+.line-E6 {
+    width: 17.6em;
+    margin-right: 25px;
+}
+
+.line-G3 {
+    width: 1.4em;
+    margin-right: 15px;
+}
+
+.line-B2 {
+    width: 9.4em;
+    margin-right: 15px;
+}
+
+.line-E1 {
+    width: 17.4em;
+    margin-right: 15px;
+}
+
 .strings-control {
-    width: 45px;
-    height: 45px;
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     background: #fff;
     color: #25A56A;
@@ -191,7 +300,7 @@ body {
     padding: 4px 15px;
     position: absolute;
     top: -50px;
-    left: 60px;
+    left: 30px;
     border-radius: 6px;
     background: linear-gradient(180deg, #33B478 0%, #222222 100%);
 }
@@ -237,5 +346,9 @@ body {
     }
     .guitar-strings {
         display: none;
+    }
+    .strings-control {
+        width: 45px;
+        height: 45px;
     }
 }
