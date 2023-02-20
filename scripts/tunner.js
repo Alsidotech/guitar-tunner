@@ -123,7 +123,11 @@ function abc(frequency) {
     // const sliderValue = parseInt(slider.value) + 16;
     // tunnerSlider.style.left = sliderValue + 'px';
     console.log('Frequency: ', frequency)
-    slider.value = frequency
+    if (frequency) {
+        slider.value = frequency
+        return;
+    }
+    slider.value = "150"
 }
 
 //This function draws that nice animation type doughnut chart on screen
