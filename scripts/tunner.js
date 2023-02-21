@@ -10,8 +10,7 @@ var string; //this variable holds name of string being tuned
 
 //As the name suggests, this function is called when page is loaded
 function initialize() {
-    abc();
-    //draw(); //draw the circles once and just display "Rhythm" as we don't have any data yet
+    draw();
     var constraints = { audio: true }; //only request audio from microphones, video not required
     //Request permission to record audio. If allowed, call use_stream function, which will process "audio stream".
     //Show error in console if permission is not granted
@@ -113,8 +112,7 @@ function use_stream(stream) {
             if (offset > 120 && offset < 630) {
                 // console.log("string = "+string+"  f = "+frequency+"  offset = "+offset+"\n");
                 // console.log("upper_limit = "+upper_limit+"  lower_limit = "+lower_limit+"\n");
-                //draw(frequency);
-                abc(frequency)
+                draw(frequency)
             }
         }
         //Recursion: Call itself after every 250ms to be ever-ready to take input and process it
@@ -124,7 +122,7 @@ function use_stream(stream) {
     auto_correlation();
 }
 
-function abc(frequency) {
+function draw(frequency) {
     let sliderLabel = document.querySelector("#slider-label");
     let slider = document.querySelector("#slider");
 
@@ -145,69 +143,4 @@ function abc(frequency) {
     slider.value = "50.0"
     sliderLabel.style.left = "51%";
 
-}
-
-//This function draws that nice animation type doughnut chart on screen
-//Global variable "string" tells the string being tuned, argument frequency stands for frequency of input signal
-function draw(frequency) {
-    //Canvas element
-    var doughnut = document.getElementById('doughnut');
-    //Set dimensions of chart according to screensize... Therefore different for mobiles and laptops
-    var dimension = window.innerHeight * 0.7;
-    if (window.innerHeight > window.innerWidth)
-        dimension = window.innerWidth * 0.9;
-    doughnut.width = dimension;
-    doughnut.height = dimension;
-    var dough_ctx = doughnut.getContext("2d");
-
-    // percent tells how close the input signal is from being in tune
-    // percent = 100 - error% in input
-    var percent;
-    console.log(string)
-    if (string == undefined)
-        percent = 100;
-    else percent = 100 - (Math.abs(frequency.toFixed(1) - standard_frequency[string].toFixed(1)) * 100) / standard_frequency[string].toFixed(1);
-    console.log('Percent: ', percent)
-        //Drawing arcs and filling nice colors
-    var centreX = dimension * 0.5,
-        centreY = dimension * 0.5,
-        radius = dimension * 0.5;
-    var angle = (2 * Math.PI * percent) / 100.0 - Math.PI / 2.0;
-    console.log('Angle: ', angle)
-    dough_ctx.fillStyle = '#ff9900';
-    dough_ctx.beginPath();
-    dough_ctx.moveTo(centreX, centreY); //centre
-    dough_ctx.arc(centreX, centreY, radius, -0.5 * Math.PI, angle);
-    dough_ctx.closePath();
-    dough_ctx.fill();
-    dough_ctx.fillStyle = '#527a7a';
-    dough_ctx.beginPath();
-    dough_ctx.moveTo(centreX, centreY); //centre
-    dough_ctx.arc(centreX, centreY, radius * 0.7, 0, 2 * Math.PI);
-    dough_ctx.closePath();
-    dough_ctx.fill();
-
-
-    //Writing information in center of doughnut chart
-    dough_ctx.textAlign = "center";
-
-    dough_ctx.fillStyle = "#001a1a";
-    dough_ctx.font = 'bold ' + (radius * 0.4 | 0) + 'px sans-serif';
-    if (string != undefined)
-        dough_ctx.fillText(strings_name[string], centreX, centreY - radius * 0.05);
-    else {
-        dough_ctx.font = 'bold ' + (radius * 0.2 | 0) + 'px URW Chancery L, cursive';
-        dough_ctx.fillText("Rhythm", centreX, centreY);
-    }
-
-    dough_ctx.fillStyle = "#001a1a";
-    dough_ctx.font = (radius * 0.15 | 0) + 'px sans-serif';
-    if (string != undefined)
-        dough_ctx.fillText((frequency).toFixed(1) + " Hz", centreX - radius * 0.2, centreY + radius * 0.2);
-
-    dough_ctx.fillStyle = "#003333";
-    dough_ctx.font = (radius * 0.15 | 0) + 'px sans-serif';
-    if (string != undefined)
-        dough_ctx.fillText("of " + (standard_frequency[string]).toFixed(1) + " Hz", centreX + radius * 0.05, centreY + radius * 0.40);
-    console.log(frequency);
 }
