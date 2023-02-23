@@ -123,24 +123,28 @@ function use_stream(stream) {
 }
 
 function draw(frequency) {
-    let sliderLabel = document.querySelector("#slider-label");
+    let sliderFrequency = document.querySelector("#slider-label-frequency");
+    let sliderStringName = document.querySelector("#slider-label-string-name");
     let slider = document.querySelector("#slider");
 
     if (frequency) {
         slider.max = (standard_frequency[string] * 2).toFixed(1)
         slider.value = (frequency).toFixed(1)
-        sliderLabel.style.left = parseInt(slider.value) / (parseInt(slider.max) / 100) + 1 + "%";
+        sliderFrequency.style.left = parseInt(slider.value) / (parseInt(slider.max) / 100) + 1 + "%";
+        sliderStringName.style.left = parseInt(slider.value) / (parseInt(slider.max) / 100) + 1 + "%";
 
         if (frequency < standard_frequency[string]) {
-            sliderLabel.innerText = "Low"
+            sliderStringName.innerText = strings_name[string]
+            sliderFrequency.innerText = "Low"
         } else {
-            sliderLabel.innerText = "High"
+            sliderStringName.innerText = strings_name[string]
+            sliderFrequency.innerText = "Low"
         }
 
         return;
     }
     slider.max = "100"
     slider.value = "50.0"
-    sliderLabel.style.left = "51%";
+    sliderFrequency.style.left = "51%";
 
 }

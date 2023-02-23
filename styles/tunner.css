@@ -188,28 +188,23 @@ body {
     cursor: pointer;
 }
 
-#tunner-slider-tooltip {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 400;
-    padding: 4px 15px;
-    position: absolute;
-    top: -50px;
-    left: 30px;
-    border-radius: 6px;
-    background: linear-gradient(180deg, #33B478 0%, #222222 100%);
-}
-
-#slider-label {
+.slider-label {
     font-size: 18px;
     font-weight: 400;
     position: absolute;
-    top: -50px;
     left: 51%;
     padding: 5px 15px;
     color: #fff;
     border-radius: 6px;
     background: linear-gradient(180deg, #33B478 0%, #222222 100%);
+}
+
+#slider-label-frequency {
+    top: -45px;
+}
+
+#slider-label-string-name {
+    top: 188px;
 }
 
 
