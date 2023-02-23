@@ -4,7 +4,8 @@ let soundIndication;
 window.addEventListener("load", initialize);
 
 //frequencies and names of guitar strngs in standard tuning
-var standard_frequency = new Array(82.4069, 110.000, 146.832, 195.998, 246.942, 329.628);
+// var standard_frequency = new Array(82.4069, 110.000, 146.832, 195.998, 246.942, 329.628);
+var standard_frequency = new Array(82, 110, 146, 196, 247, 328);
 var strings_name = new Array("E", "A", "D", "G", "B", "E");
 var string; //this variable holds name of string being tuned
 
@@ -116,13 +117,46 @@ function use_stream(stream) {
             }
         }
         //Recursion: Call itself after every 250ms to be ever-ready to take input and process it
-        setTimeout(auto_correlation, 250);
+        setTimeout(auto_correlation, 20);
     }
     //Calling auto_correlation once on page load
     auto_correlation();
 }
 
 function draw(frequency) {
+    const cents = 1200 * Math.log2(frequency / standard_frequency[string]);
+    let sliderFrequency = document.querySelector("#slider-label-frequency");
+    let sliderStringName = document.querySelector("#slider-label-string-name");
+    let slider = document.querySelector("#slider");
+
+    if (frequency) {
+        slider.value = cents
+        let marginLeft;
+
+        if (cents < 0) {
+            marginLeft = Math.ceil(50 + cents / 9) + 1 + "%";
+            sliderFrequency.innerText = "Low"
+        } else if (cents === 0) {
+            marginLeft = "51%"
+            sliderFrequency.innerText = "Normal"
+        } else {
+            marginLeft = Math.ceil(50 + cents / 9) + 1 + "%";
+            sliderFrequency.innerText = "High"
+        }
+        sliderStringName.innerText = strings_name[string]
+        sliderFrequency.style.left = marginLeft;
+        sliderStringName.style.left = marginLeft;
+
+        return;
+    }
+
+    slider.value = "0.0"
+    sliderFrequency.style.left = "51%";
+
+}
+
+function drawOld(frequency) {
+
     let sliderFrequency = document.querySelector("#slider-label-frequency");
     let sliderStringName = document.querySelector("#slider-label-string-name");
     let slider = document.querySelector("#slider");
@@ -134,15 +168,17 @@ function draw(frequency) {
         sliderStringName.style.left = parseInt(slider.value) / (parseInt(slider.max) / 100) + 1 + "%";
 
         if (frequency < standard_frequency[string]) {
-            sliderStringName.innerText = strings_name[string]
             sliderFrequency.innerText = "Low"
+        } else if (frequency === standard_frequency[string]) {
+            sliderFrequency.innerText = "Normal"
         } else {
-            sliderStringName.innerText = strings_name[string]
-            sliderFrequency.innerText = "Low"
+            sliderFrequency.innerText = "High"
         }
+        sliderStringName.innerText = strings_name[string]
 
         return;
     }
+
     slider.max = "100"
     slider.value = "50.0"
     sliderFrequency.style.left = "51%";
