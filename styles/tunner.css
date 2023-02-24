@@ -329,6 +329,7 @@ body {
 @media only screen and (max-width: 425px) {
     .tunner-container {
         width: 90%;
+        height: 96vh;
     }
     .header {
         flex-direction: column;
@@ -342,6 +343,13 @@ body {
     #page-title {
         font-size: 18px;
         font-weight: 700;
+        margin-top: 5px;
+    }
+    .tunner-section {
+        margin-top: 50px;
+    }
+    .guitar {
+        margin-top: 75px;
     }
     .guitar img {
         width: 270px;
