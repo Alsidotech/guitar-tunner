@@ -1,7 +1,4 @@
-const metronomeContainer = document.querySelector('.metronome-container');
 const led = document.querySelectorAll('.led');
-
-const colors = ['rgba(152, 165, 37, 0.21)', 'rgba(37, 165, 88, 0.21)', 'rgba(37, 110, 165, 0.21)', 'rgba(165, 37, 97, 0.21)']
 let index = 0
 
 // Add accurate timer constructor function
@@ -45,7 +42,6 @@ function Timer(callback, timeInterval, options) {
         this.expected += this.timeInterval;
         console.log('Drift:', drift);
         console.log('Next round time interval:', this.timeInterval - drift);
-        metronomeContainer.style.background = `radial-gradient(116.99% 103.56% at 50% 100%, rgba(33, 41, 41, 0) 0%, ${colors[index]} 87.75%), linear-gradient(0deg, #FFFFFF, #FFFFFF)`;
         led[index].classList.add('led-color')
 
         switch (index) {
