@@ -18,14 +18,10 @@ function initialize() {
     navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
             console.log("Connected live audio input :)"); //Yeah, we're happy
-            soundIndication = document.querySelector("#volume-icon");
-            soundIndication.src = "./assets/mic-on.svg";
             use_stream(stream);
         })
         .catch(function(err) {
             console.log(err.name + ": " + err.message);
-            soundIndication = document.querySelector("#volume-icon");
-            soundIndication.src = "./assets/mic-off.svg";
         }); // always check for errors at the end.
 }
 
@@ -151,36 +147,6 @@ function draw(frequency) {
     }
 
     slider.value = "0.0"
-    sliderFrequency.style.left = "51%";
-
-}
-
-function drawOld(frequency) {
-
-    let sliderFrequency = document.querySelector("#slider-label-frequency");
-    let sliderStringName = document.querySelector("#slider-label-string-name");
-    let slider = document.querySelector("#slider");
-
-    if (frequency) {
-        slider.max = (standard_frequency[string] * 2).toFixed(1)
-        slider.value = (frequency).toFixed(1)
-        sliderFrequency.style.left = parseInt(slider.value) / (parseInt(slider.max) / 100) + 1 + "%";
-        sliderStringName.style.left = parseInt(slider.value) / (parseInt(slider.max) / 100) + 1 + "%";
-
-        if (frequency < standard_frequency[string]) {
-            sliderFrequency.innerText = "Low"
-        } else if (frequency === standard_frequency[string]) {
-            sliderFrequency.innerText = "Normal"
-        } else {
-            sliderFrequency.innerText = "High"
-        }
-        sliderStringName.innerText = strings_name[string]
-
-        return;
-    }
-
-    slider.max = "100"
-    slider.value = "50.0"
     sliderFrequency.style.left = "51%";
 
 }

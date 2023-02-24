@@ -33,10 +33,6 @@ body {
     align-items: center
 }
 
-#volume-icon {
-    width: 54px;
-}
-
 
 /* Dropdown Menu */
 
@@ -153,6 +149,16 @@ body {
     width: 100%;
     margin-top: 0px;
     z-index: 1000;
+}
+
+.tunner-lines {
+    width: 2px;
+    height: 100px;
+    background: #00000080;
+}
+
+.tunner-lines-height {
+    height: 125px;
 }
 
 .slider {
@@ -327,23 +333,11 @@ body {
     .header {
         flex-direction: column;
     }
-    .volume {
-        width: 100%;
-    }
-    #volume-icon {
-        width: 32px;
-    }
     .brand-logo img {
         width: 185px;
     }
     .dropdown {
         display: none;
-    }
-    .volume-section {
-        padding: 0 20px;
-    }
-    .volume-bar {
-        width: 100%;
     }
     #page-title {
         font-size: 18px;
