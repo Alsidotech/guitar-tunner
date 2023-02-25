@@ -81,13 +81,16 @@ function playClick() {
     if (count === beatsTotal) {
         count = 0;
     }
-    if (count === 0) {
-        click1.play();
-        click1.currentTime = 0;
-    } else {
+    console.log("Play: ", count, beatsTotal);
+    // if (count === 0) {
+    //     click1.play();
+    //     click1.currentTime = 0;
+    // } else {
+    if (count > 0) {
         click2.play();
-        click2.currentTime = 0;
     }
+    // click2.currentTime = 0;
+    // }
     count++;
 }
 

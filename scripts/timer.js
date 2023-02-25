@@ -1,5 +1,5 @@
 const led = document.querySelectorAll('.led');
-let index = 0
+let index = 1
 
 // Add accurate timer constructor function
 function Timer(callback, timeInterval, options) {
