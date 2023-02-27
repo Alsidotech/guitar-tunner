@@ -1,94 +1,46 @@
-import Timer from './timer.js';
+import Metronome from './metronomeTimer.js';
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    // Grab HTML Elements
-    const tempoDisplay = document.querySelector('.tempo');
-    const tempoSlider = document.querySelector('.slider');
-    const subtractBeats = document.querySelector('#subtract-beats');
-    const addBeats = document.querySelector('#add-beats');
-    const beatsValue = document.querySelector('#beats-value');
-    const beatsValueDown = document.querySelector('#beats-value-down');
-    const beatsValueUp = document.querySelector('#beats-value-up');
-    const playPauseBtn = document.querySelector('#play-pause');
+const metronome = new Metronome();
 
-    const click2 = new Audio('./assets/audio/click2.mp3');
+const tempo = document.querySelector('.tempo');
+const tempoSlider = document.querySelector('.slider');
+const subtractBeats = document.querySelector('#subtract-beats');
+const addBeats = document.querySelector('#add-beats');
+const beatsValue = document.querySelector('#beats-value');
+const beatsValueDown = document.querySelector('#beats-value-down');
+const beatsValueUp = document.querySelector('#beats-value-up');
+const playPauseBtn = document.querySelector('#play-pause');
 
-    let bpm = 120;
-    let beatsTotal = bpm;
-    let beatsValuePlus = beatsTotal + 1;
-    let beatsValueMinus = beatsTotal - 1;
-    let count = 0;
-    let isRunning = false;
+tempo.textContent = metronome.tempo;
 
-    // Add Event Listeners
-    tempoSlider.addEventListener('input', () => {
-        bpm = tempoSlider.value;
-        validateTempo();
-        updateMetronome();
-    });
+// Add Event Listeners
+tempoSlider.addEventListener('input', (event) => {
+    metronome.tempo = event.target.value;
+    tempo.textContent = metronome.tempo;
+});
 
-    subtractBeats.addEventListener('click', () => {
-        if (beatsTotal <= 40) { return };
-        beatsTotal--;
-        beatsValuePlus = beatsTotal + 1;
-        beatsValueMinus = beatsTotal - 1;
-        beatsValue.textContent = beatsTotal;
-        beatsValueUp.textContent = beatsValuePlus;
-        beatsValueDown.textContent = beatsValueMinus;
-        bpm = beatsTotal;
-        validateTempo();
-        updateMetronome();
-        count = 0;
-    });
+subtractBeats.addEventListener('click', () => {
+    if (metronome.tempo <= 40) { return };
+    metronome.tempo--;
+    beatsValue.textContent = metronome.tempo;
+    beatsValueUp.textContent = metronome.tempo + 1;
+    beatsValueDown.textContent = metronome.tempo - 1;
+});
 
-    addBeats.addEventListener('click', () => {
-        if (beatsTotal >= 220) { return };
-        beatsTotal++;
-        beatsValuePlus = beatsTotal + 1;
-        beatsValueMinus = beatsTotal - 1;
-        beatsValue.textContent = beatsTotal;
-        beatsValueUp.textContent = beatsValuePlus;
-        beatsValueDown.textContent = beatsValueMinus;
-        bpm = beatsTotal;
-        validateTempo();
-        updateMetronome();
-        count = 0;
-    });
+addBeats.addEventListener('click', () => {
+    if (metronome.tempo >= 220) { return };
+    metronome.tempo++;
+    beatsValue.textContent = metronome.tempo;
+    beatsValueUp.textContent = metronome.tempo + 1;
+    beatsValueDown.textContent = metronome.tempo - 1;
+});
 
-    playPauseBtn.addEventListener('click', () => {
-        count = 0;
-        if (!isRunning) {
-            metronome.start();
-            isRunning = true;
-            playPauseBtn.textContent = 'Pause';
-        } else {
-            metronome.stop();
-            isRunning = false;
-            playPauseBtn.textContent = 'Play';
-        }
-    });
+playPauseBtn.addEventListener('click', function() {
+    metronome.startStop();
 
-    function updateMetronome() {
-        tempoDisplay.textContent = bpm;
-        tempoSlider.value = bpm;
-        metronome.timeInterval = 60000 / bpm;
+    if (metronome.isRunning) {
+        playPauseBtn.textContent = 'Pause';
+    } else {
+        playPauseBtn.textContent = 'Play';
     }
-
-    function validateTempo() {
-        if (bpm <= 40) { return };
-        if (bpm >= 220) { return };
-    }
-
-    function playClick() {
-        if (count === beatsTotal) {
-            count = 0;
-        }
-
-        if (count > 0) {
-            click2.play();
-        }
-        count++;
-    }
-
-    const metronome = new Timer(playClick, 60000 / bpm, { immediate: true });
 });
