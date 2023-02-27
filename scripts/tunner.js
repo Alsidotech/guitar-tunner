@@ -131,13 +131,13 @@ function draw(frequency) {
 
         if (cents < 0) {
             marginLeft = Math.ceil(50 + cents / 9) + 1 + "%";
-            sliderFrequency.innerText = "Low"
+            sliderFrequency.innerText = "Nizko" // Low => Nizko
         } else if (cents === 0) {
             marginLeft = "51%"
-            sliderFrequency.innerText = "Normal"
+            sliderFrequency.innerText = "Pravilno" // Pravilno => Normal
         } else {
             marginLeft = Math.ceil(50 + cents / 9) + 1 + "%";
-            sliderFrequency.innerText = "High"
+            sliderFrequency.innerText = "Visoko" //Visoko => High
         }
         sliderStringName.innerText = strings_name[string]
         sliderFrequency.style.left = marginLeft;
