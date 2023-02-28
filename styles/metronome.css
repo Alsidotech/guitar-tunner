@@ -51,7 +51,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
 }
 
 .slider {
@@ -225,8 +224,8 @@ body {
         font-size: 18px;
         font-weight: 700;
     }
-    #brand-logo {
-        display: none;
+    #brand-logo img {
+        width: 220px;
     }
     #mobile-range {
         display: flex;
