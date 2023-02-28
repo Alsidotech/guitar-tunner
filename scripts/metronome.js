@@ -39,8 +39,8 @@ playPauseBtn.addEventListener('click', function() {
     metronome.startStop();
 
     if (metronome.isRunning) {
-        playPauseBtn.textContent = 'Pause';
+        playPauseBtn.textContent = 'Izklop'; // Izklop => Pause
     } else {
-        playPauseBtn.textContent = 'Play';
+        playPauseBtn.textContent = 'Vklop'; // Vklop => Play
     }
 });
