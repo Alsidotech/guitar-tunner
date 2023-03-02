@@ -4,9 +4,9 @@ let soundIndication;
 window.addEventListener("load", initialize);
 
 //frequencies and names of guitar strngs in standard tuning
-// var standard_frequency = new Array(82.4069, 110.000, 146.832, 195.998, 246.942, 329.628);
-var standard_frequency = new Array(82, 110, 146, 196, 247, 328);
-var strings_name = new Array("E", "A", "D", "G", "B", "E");
+// var standard_frequency = new Array(261.63, 329.63, 392, 440);
+var standard_frequency = new Array(262, 331, 393, 440);
+var strings_name = new Array("C", "E", "G", "A");
 var string; //this variable holds name of string being tuned
 
 //As the name suggests, this function is called when page is loaded
@@ -37,7 +37,7 @@ function use_stream(stream) {
     microphone.connect(analyser);
     //Twice of number of samples of input audio we want to capture. 4096 seemed sufficient.
     //Higher values will take more CPU time, and may not be doable in real time.
-    analyser.fftSize = 4096;
+    analyser.fftSize = 4096; //4096
     //Number of sample = 2048
     var bufferLength = analyser.frequencyBinCount;
 
@@ -58,7 +58,7 @@ function use_stream(stream) {
             //Compare the signal with itself and different offsets(6 offsets for 6 strings).
             //Offset which gives minimum difference will correspond to the string being tuned.
             min_diff = 1000000000;
-            for (var i = 0; i < 6; i++) {
+            for (var i = 0; i < 4; i++) {
                 difference = 0;
                 // Eg. sample rate is 8 samples/second
                 // frequency = 2 
@@ -102,9 +102,6 @@ function use_stream(stream) {
                     offset = i;
                 }
             }
-            // console.log("Sample Rate: ", audio_context.sampleRate);
-            // console.log("Offset: ", offset);
-
             //Frequency of input signal
             frequency = Math.floor((audio_context.sampleRate) / offset);
             // Frequencies for offset <120 or >630 will be just noises, as they are far from range of guitar strings
@@ -116,33 +113,39 @@ function use_stream(stream) {
             }
         }
         //Recursion: Call itself after every 250ms to be ever-ready to take input and process it
-        setTimeout(auto_correlation, 20);
+        setTimeout(auto_correlation, 250);
     }
     //Calling auto_correlation once on page load
     auto_correlation();
 }
 
 function draw(frequency) {
-    const cents = 1200 * Math.log2(frequency / standard_frequency[string]);
+    let cents = 1200 * Math.log2(frequency / standard_frequency[string]);
     let sliderFrequency = document.querySelector("#slider-label-frequency");
     let sliderStringName = document.querySelector("#slider-label-string-name");
     let slider = document.querySelector("#slider");
 
     if (frequency) {
-        slider.value = cents
         let marginLeft;
+        const min = -(Math.abs(cents) + 1000)
+        const max = Math.abs(cents) + 1000
+        const per = Math.ceil((Math.abs(cents) + 1000) * 2 / 100)
+        slider.min = min
+        slider.max = max
+        slider.value = cents
+        console.log("Frequency: ", frequency);
 
         if (cents < 0) {
-            marginLeft = Math.ceil(50 + cents / 9) + 1 + "%";
+            marginLeft = Math.ceil(50 + cents / per) + 1 + "%";
             sliderFrequency.innerText = "Nizko" // Low => Nizko
         } else if (cents === 0) {
             marginLeft = "51%"
             sliderFrequency.innerText = "Pravilno" // Pravilno => Normal
         } else {
-            marginLeft = Math.ceil(50 + cents / 9) + 1 + "%";
+            marginLeft = Math.ceil(50 + cents / per) + 1 + "%";
             sliderFrequency.innerText = "Visoko" //Visoko => High
         }
-        sliderStringName.innerText = strings_name[string]
+        sliderStringName.innerText = strings_name[string] + ' ' + frequency
         sliderFrequency.style.left = marginLeft;
         sliderStringName.style.left = marginLeft;
 

@@ -29,7 +29,7 @@ body {
     margin-top: 40px;
     padding: 0 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center
 }
 
@@ -279,11 +279,13 @@ body {
     margin-left: 10px;
 }
 
+.line-C4,
 .line-D4 {
     width: 1.6em;
     margin-right: 25px;
 }
 
+.line-G4,
 .line-A5 {
     width: 9.6em;
     margin-right: 25px;
@@ -294,11 +296,13 @@ body {
     margin-right: 25px;
 }
 
+.line-E4,
 .line-G3 {
     width: 1.4em;
     margin-right: 15px;
 }
 
+.line-A4,
 .line-B2 {
     width: 9.4em;
     margin-right: 15px;
