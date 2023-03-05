@@ -223,7 +223,7 @@ body {
 }
 
 .guitar-strings {
-    width: 70%;
+    width: 710px;
     display: flex;
     position: absolute;
 }
@@ -261,6 +261,7 @@ body {
 }
 
 .string {
+    width: 235px;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -268,6 +269,7 @@ body {
 }
 
 .string-right {
+    width: 235px;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -330,6 +332,19 @@ body {
 
 /* Media Queries */
 
+@media only screen and (max-width: 300px) {
+    .header img {
+        height: 30px !important;
+    }
+    .guitar img {
+        width: 185px !important;
+    }
+    .strings {
+        height: 185px !important;
+        padding-top: 20px;
+    }
+}
+
 @media only screen and (max-width: 425px) {
     .tunner-container {
         width: 90%;
@@ -338,8 +353,8 @@ body {
     .header {
         flex-direction: column;
     }
-    .brand-logo img {
-        width: 185px;
+    .header img {
+        height: 40px;
     }
     .dropdown {
         display: none;
@@ -368,5 +383,36 @@ body {
     .strings-control {
         width: 45px;
         height: 45px;
+    }
+    .strings {
+        height: 230px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .guitar img {
+        width: 250px;
+    }
+    .guitar-strings {
+        width: 550px;
+    }
+    .string {
+        width: 160px;
+    }
+    .strings-web {
+        height: 230px;
+        padding-top: 25px;
+        padding-right: 85px;
+        padding-left: 50px;
+    }
+    .string-right {
+        width: 150px;
+    }
+    .right-side-web {
+        padding-left: 85px;
+    }
+    .line-G4,
+    .line-A4 {
+        width: 4em;
     }
 }
