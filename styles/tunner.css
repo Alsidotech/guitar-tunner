@@ -289,12 +289,12 @@ body {
 
 .line-G4,
 .line-A5 {
-    width: 9.6em;
+    width: 4.6em;
     margin-right: 25px;
 }
 
 .line-E6 {
-    width: 17.6em;
+    width: 9.6em;
     margin-right: 25px;
 }
 
@@ -306,12 +306,12 @@ body {
 
 .line-A4,
 .line-B2 {
-    width: 9.4em;
+    width: 4em;
     margin-right: 15px;
 }
 
 .line-E1 {
-    width: 17.4em;
+    width: 9.4em;
     margin-right: 15px;
 }
 
@@ -332,7 +332,7 @@ body {
 
 /* Media Queries */
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 365px) {
     .header img {
         height: 30px !important;
     }
@@ -414,5 +414,16 @@ body {
     .line-G4,
     .line-A4 {
         width: 4em;
+    }
+    .line-A5,
+    .line-B2 {
+        width: 2.5em;
+    }
+    .line-E1,
+    .line-E6 {
+        width: 4em;
+    }
+    .string-right-setting {
+        width: 235px;
     }
 }
