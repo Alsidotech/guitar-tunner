@@ -324,7 +324,7 @@ function updatePitch() {
             sliderFrequency.innerText = "Visoko" //Visoko => High
             console.log("Detune: ", format(detune));
         }
-        sliderStringName.innerText = Tune.getNoteName(Tune.ftom(frequency) * -1) + '(' + Math.round(frequency) + ')' + note
+        sliderStringName.innerText = Tune.getNoteName(Tune.ftom(frequency) * -1)
         sliderFrequency.style.left = marginLeft;
         sliderStringName.style.left = marginLeft;
     }
