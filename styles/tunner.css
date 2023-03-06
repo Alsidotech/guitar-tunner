@@ -93,6 +93,22 @@ body {
 
 /* Tunner Section */
 
+.startStopBtn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.startStopBtn span {
+    background: linear-gradient(180deg, #33B478 0%, #222222 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    user-select: none;
+    cursor: pointer;
+}
+
 .tunner-section {
     width: 100%;
     display: flex;
@@ -222,6 +238,10 @@ body {
     justify-content: center
 }
 
+.guitar img {
+    z-index: 1;
+}
+
 .guitar-strings {
     width: 710px;
     display: flex;
@@ -244,8 +264,8 @@ body {
 }
 
 .strings-web {
-    height: 290px;
-    padding-top: 40px;
+    height: 265px;
+    padding-top: 65px;
     padding-bottom: 25px;
     padding-left: 10px;
     padding-right: 120px;
@@ -340,8 +360,8 @@ body {
         width: 185px !important;
     }
     .strings {
-        height: 185px !important;
-        padding-top: 20px;
+        height: 162px !important;
+        padding-top: 25px !important;
     }
 }
 
@@ -385,13 +405,15 @@ body {
         height: 45px;
     }
     .strings {
-        height: 230px;
+        height: 198px;
+        padding-top: 42px;
     }
 }
 
 @media only screen and (max-width: 900px) {
     .guitar img {
         width: 250px;
+        margin-left: 8px;
     }
     .guitar-strings {
         width: 550px;
@@ -400,8 +422,8 @@ body {
         width: 160px;
     }
     .strings-web {
-        height: 230px;
-        padding-top: 25px;
+        height: 198px;
+        padding-top: 35px;
         padding-right: 85px;
         padding-left: 50px;
     }

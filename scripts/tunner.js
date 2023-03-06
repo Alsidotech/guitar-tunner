@@ -123,6 +123,7 @@ function use_stream(stream) {
 }
 
 function draw(frequency) {
+    console.log("Freq: ", frequency);
     const cents = 1200 * Math.log2(frequency / standard_frequency[string]);
     let sliderFrequency = document.querySelector("#slider-label-frequency");
     let sliderStringName = document.querySelector("#slider-label-string-name");

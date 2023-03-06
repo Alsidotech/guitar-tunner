@@ -8,7 +8,6 @@
     <title>Ukulele Tunner</title>
     <link rel="stylesheet" href="./styles/tunner.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="./scripts/ukuleleTunner.js"></script>
 </head>
 
 <body>
@@ -20,6 +19,10 @@
 
         <!-- Tunner Heading -->
         <h2 id="page-title">Ukulele</h2>
+
+        <div class="startStopBtn">
+            <span>Start</span>
+        </div>
 
         <!-- Volume Bar Section -->
         <div class="tunner-section">
@@ -51,15 +54,15 @@
 
             <div class="tunner-slider-container">
                 <label for="slider" id="slider-label-frequency" class="slider-label">Pravilno</label>
-                <input type="range" class="tunner-range-slider slider" id="slider" min="-450" max="450" value="0.0" step="0.1" disabled>
-                <label for="slider" id="slider-label-string-name" class="slider-label">E</label>
+                <input type="range" class="tunner-range-slider slider" id="slider" min="-100" max="100" value="0.0" step="0.1" disabled>
+                <label for="slider" id="slider-label-string-name" class="slider-label">-</label>
             </div>
 
         </div>
 
         <!-- Guitar Section -->
         <div class="guitar">
-            <img src="./assets/guitar.svg" alt="guitar">
+            <img src="./assets/ukulele.png" alt="guitar">
 
             <div class="guitar-strings">
                 <div class="strings left-side strings-web">
@@ -108,9 +111,17 @@
                 <source src="./assets/audio/nodes/A4.mp3"></source>
             </audio>
         </div>
+
+        <select id="audioSource" style="visibility: hidden;"></select>
     </div>
 
     <script src="./scripts/ukuleleNodes.js" type="module"></script>
+    <script src="./scripts/ukuleleTunner.js"></script>
+
+    <script>
+        // create tuner
+        var tuner = new Tune();
+    </script>
 
 </body>
 
