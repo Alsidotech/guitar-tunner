@@ -179,6 +179,7 @@ function initialize(e) {
     analyser = audioContext.createAnalyser();
     analyser.fftSize = 2048;
     navigator.mediaDevices.getUserMedia({ video: false, audio: !this.isCameraAccessGranted, }).then(() => { enumm(); });
+    console.log("object");
     updatePitch()
 }
 
@@ -322,7 +323,6 @@ function updatePitch() {
         } else {
             marginLeft = Math.ceil(50 + detune / 2) + 1 + "%";
             sliderFrequency.innerText = "Visoko" //Visoko => High
-            console.log("Detune: ", format(detune));
         }
         sliderStringName.innerText = Tune.getNoteName(Tune.ftom(frequency) * -1)
         sliderFrequency.style.left = marginLeft;
@@ -332,7 +332,9 @@ function updatePitch() {
     if (!window.requestAnimationFrame) {
         window.requestAnimationFrame = window.webkitRequestAnimationFrame;
     }
-    rafID = window.requestAnimationFrame(updatePitch);
+    setTimeout(() => {
+        rafID = window.requestAnimationFrame(updatePitch);
+    }, 120)
 }
 
 // add (+) if positive, and round to 4 decimals
