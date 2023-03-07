@@ -312,21 +312,21 @@ function updatePitch() {
         const note = Tune.noteFromPitch(frequency)
 
         var detune = tuner.tune(frequency)
-        slider.value = detune
 
         if (detune < 0) {
-            marginLeft = Math.ceil(50 + detune / 2) + 1 + "%";
+            marginLeft = Math.ceil(50 + Math.round(detune / 2)) + 1 + "%";
             sliderFrequency.innerText = "Nizko" // Low => Nizko
         } else if (detune == 0) {
             marginLeft = "51%"
             sliderFrequency.innerText = "Pravilno" // Pravilno => Normal
         } else {
-            marginLeft = Math.ceil(50 + detune / 2) + 1 + "%";
+            marginLeft = Math.ceil(50 + Math.round(detune / 2)) + 1 + "%";
             sliderFrequency.innerText = "Visoko" //Visoko => High
         }
-        sliderStringName.innerText = Tune.getNoteName(Tune.ftom(frequency) * -1)
+        slider.value = detune
         sliderFrequency.style.left = marginLeft;
         sliderStringName.style.left = marginLeft;
+        sliderStringName.innerText = Tune.getNoteName(Tune.ftom(frequency) * -1)
     }
 
     if (!window.requestAnimationFrame) {
@@ -334,7 +334,7 @@ function updatePitch() {
     }
     setTimeout(() => {
         rafID = window.requestAnimationFrame(updatePitch);
-    }, 120)
+    }, 150)
 }
 
 // add (+) if positive, and round to 4 decimals
