@@ -1,10 +1,7 @@
-let soundIndication;
-
 //Call initialize() when page is loaded
 window.addEventListener("load", initialize);
 
 //frequencies and names of guitar strngs in standard tuning
-// var standard_frequency = new Array(82.4069, 110.000, 146.832, 195.998, 246.942, 329.628);
 var standard_frequency = new Array(82, 110, 146, 196, 247, 328);
 var strings_name = new Array("E", "A", "D", "G", "B", "E");
 var string; //this variable holds name of string being tuned

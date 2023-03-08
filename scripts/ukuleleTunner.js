@@ -1,6 +1,3 @@
-var AudioContext = window.AudioContext || window.webkitAudioContext;
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
-
 var thestream
 var audioContext = null;
 var analyser = null;
@@ -47,7 +44,7 @@ class Tune {
 
         this.setTemperament(this.temperament);
 
-        startStopBtn.querySelector('span').addEventListener('click', initialize)
+        window.addEventListener("load", initialize);
     }
 
     // set temperament
@@ -168,18 +165,13 @@ class Tune {
     }
 }
 
-function initialize(e) {
-    if (isRunning) {
-        startStopBtn.querySelector("span").innerText = 'Start'
-        document.location.reload(true)
-    }
-    startStopBtn.querySelector("span").innerText = 'Stop'
-    isRunning = 1
-    audioContext = new(window.AudioContext || window.webkitAudioContext)();
-    analyser = audioContext.createAnalyser();
-    analyser.fftSize = 2048;
-    navigator.mediaDevices.getUserMedia({ video: false, audio: !this.isCameraAccessGranted, }).then(() => { enumm(); });
-    console.log("object");
+async function initialize() {
+    await navigator.mediaDevices.getUserMedia({ video: false, audio: !this.isCameraAccessGranted, }).then(() => {
+        audioContext = new(window.AudioContext || window.webkitAudioContext)();
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 2048;
+        enumm();
+    });
     updatePitch()
 }
 
@@ -306,11 +298,10 @@ function updatePitch() {
         sliderStringName.innerText = "-";
         slider.value = "0.0"
         sliderFrequency.style.left = "51%";
+        sliderStringName.style.left = "51%";
     } else {
-        frequency = ac;
+        frequency = Math.floor(ac);
         Tune.getNoteName(Tune.ftom(frequency))
-        const note = Tune.noteFromPitch(frequency)
-
         var detune = tuner.tune(frequency)
 
         if (detune < 0) {
@@ -334,7 +325,7 @@ function updatePitch() {
     }
     setTimeout(() => {
         rafID = window.requestAnimationFrame(updatePitch);
-    }, 150)
+    }, 200)
 }
 
 // add (+) if positive, and round to 4 decimals

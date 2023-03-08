@@ -93,22 +93,6 @@ body {
 
 /* Tunner Section */
 
-.startStopBtn {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.startStopBtn span {
-    background: linear-gradient(180deg, #33B478 0%, #222222 100%);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 18px;
-    user-select: none;
-    cursor: pointer;
-}
-
 .tunner-section {
     width: 100%;
     display: flex;
