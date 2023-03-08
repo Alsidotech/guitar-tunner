@@ -303,14 +303,16 @@ function updatePitch() {
         frequency = Math.floor(ac);
         Tune.getNoteName(Tune.ftom(frequency))
         var detune = tuner.tune(frequency)
+        var detune = Math.abs(tuner.tune(frequency)) < 1 ? 0 : tuner.tune(frequency);
 
-        if (detune < 0) {
+        if (detune < -3) {
             marginLeft = Math.ceil(50 + Math.round(detune / 2)) + 1 + "%";
             sliderFrequency.innerText = "Nizko" // Low => Nizko
-        } else if (detune == 0) {
+        } else if (detune == 0 || Math.abs(detune) <= 3) {
             marginLeft = "51%"
+            detune = 0
             sliderFrequency.innerText = "Pravilno" // Pravilno => Normal
-        } else {
+        } else if (detune > 3) {
             marginLeft = Math.ceil(50 + Math.round(detune / 2)) + 1 + "%";
             sliderFrequency.innerText = "Visoko" //Visoko => High
         }
