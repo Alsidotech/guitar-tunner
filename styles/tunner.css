@@ -217,9 +217,13 @@ body {
 /* Guitar Section */
 
 .guitar {
-    margin: 85px;
+    margin: 80px;
     display: flex;
     justify-content: center
+}
+
+.ukulele-settings {
+    margin-top: 73px;
 }
 
 .guitar img {
@@ -248,8 +252,16 @@ body {
 }
 
 .strings-web {
+    height: 290px;
+    padding-top: 42px;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 120px;
+}
+
+.ukulele-string-web {
     height: 265px;
-    padding-top: 65px;
+    padding-top: 67px;
     padding-bottom: 25px;
     padding-left: 10px;
     padding-right: 120px;
@@ -298,7 +310,7 @@ body {
 }
 
 .line-E6 {
-    width: 9.6em;
+    width: 6.6em;
     margin-right: 25px;
 }
 
@@ -315,7 +327,7 @@ body {
 }
 
 .line-E1 {
-    width: 9.4em;
+    width: 6.6em;
     margin-right: 15px;
 }
 
@@ -407,9 +419,14 @@ body {
     }
     .strings-web {
         height: 198px;
-        padding-top: 35px;
+        padding-top: 22px;
         padding-right: 85px;
         padding-left: 50px;
+    }
+    .ukulele-string-web {
+        height: 198px;
+        padding-top: 35px;
+        padding-left: 48px;
     }
     .string-right {
         width: 150px;

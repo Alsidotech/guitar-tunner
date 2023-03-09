@@ -3,7 +3,7 @@ window.addEventListener("load", initialize);
 
 //frequencies and names of guitar strngs in standard tuning
 var standard_frequency = new Array(82, 110, 146, 196, 247, 328);
-var strings_name = new Array("E", "A", "D", "G", "B", "E");
+var strings_name = new Array("E", "A", "D", "G", "H", "E");
 var string; //this variable holds name of string being tuned
 
 //As the name suggests, this function is called when page is loaded
